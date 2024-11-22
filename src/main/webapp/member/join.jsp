@@ -21,13 +21,16 @@
 			<td>
 				<input type="text" name="userid" size="20" id="userid">*
 				<input type="hidden" name="reid" size="20">
-				<input type="button" name="중복 체크" onclick="idCheck()">
+				<input type="button" value="중복 체크" onclick="idCheck()">
 			</td>
 		</tr>
 		<tr>
 			<td>암 호</td>
 			<td><input type="password" name="pwd" size="20">*</td>
 		</tr>
+		<tr height="30">
+			<td width="80">암호 확인</td>
+			<td><input type="password" name="pwd_check" size="20">*</td>
 		<tr>
 			<td>이메일</td>
 			<td><input type="text" name="email" size="20"></td>

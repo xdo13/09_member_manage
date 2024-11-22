@@ -1,24 +1,32 @@
 package com.dino.controller;
 
+import java.io.IOException;
+
+import com.dino.dao.MemberDAO;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-/**
- * Servlet implementation class IdCheckServlet
- */
+@WebServlet("/idCheck.do")
 public class IdCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String userid = request.getParameter("userid");
+		MemberDAO mDao = MemberDAO.getInstance();
+		int result = mDao.confirmID(userid);
+		System.out.println("result===="+ result);
+		
+		request.setAttribute("userid", userid);
+		request.setAttribute("result", result);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idcheck.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
