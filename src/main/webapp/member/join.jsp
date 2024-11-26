@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="script/member/js"></script>
+<script type="text/javascript" src="script/member.js"></script>
 </head>
 <body>
 <h2>회원 가입</h2>
@@ -21,7 +21,8 @@
 			<td>
 				<input type="text" name="userid" size="20" id="userid">*
 				<input type="hidden" name="reid" size="20">
-				<input type="button" value="중복 체크" onclick="idCheck()">
+				<input type="button" value="중복 체크"  onclick = "return idCheck()">
+				   
 			</td>
 		</tr>
 		<tr>
