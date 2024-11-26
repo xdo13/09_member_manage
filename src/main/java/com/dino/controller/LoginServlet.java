@@ -17,7 +17,13 @@ import com.dino.dto.MemberVO;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	String url = "member/login.jsp";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//이미 로그인 된 사용자라면 메인페이지로 이동
+		if(session.getAttribute("loginUser") != null) {
+			url = "main.jsp";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
 		dispatcher.forward(request, response);
 		
